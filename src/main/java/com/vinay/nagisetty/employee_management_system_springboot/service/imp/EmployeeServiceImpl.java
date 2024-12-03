@@ -5,6 +5,8 @@ import com.vinay.nagisetty.employee_management_system_springboot.repository.Empo
 import com.vinay.nagisetty.employee_management_system_springboot.service.EmployeeSerivce;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EmployeeServiceImpl implements EmployeeSerivce {
 
@@ -17,5 +19,10 @@ public class EmployeeServiceImpl implements EmployeeSerivce {
     @Override
     public Employee saveEmployee(Employee employee) {
         return employrepository.save(employee);
+    }
+
+    @Override
+    public List getAllEmployee() {
+        return employrepository.findAll();
     }
 }
