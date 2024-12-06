@@ -39,4 +39,42 @@ public class EmployeeServiceImpl implements EmployeeSerivce {
         }
 
     }
+
+    @Override
+    public Employee updateEmployee(Employee employee, long id) {
+        Employee existingEmployee= employrepository.findById(id).orElseThrow(
+       ()->   new ResourceNotFoundException("Employee","Id",id));
+        existingEmployee.setFirstName(employee.getFirstName());
+        existingEmployee.setEmail(employee.getEmail());
+        // Update the first name
+
+
+        // You can add more setters to update other fields
+        existingEmployee.setLastName(employee.getLastName());
+
+        employrepository.save(existingEmployee);
+
+        // Save and return the updated employee
+        return existingEmployee;
+    }
+
+//    @Override
+//    public Employee updateEmployee(Employee employee, long id) {
+//        Employee existingEmployee= employrepository.findById(id).orElseThrow(
+//                ()->   new ResourceNotFoundException("Employee","Id",id));
+//
+////        existingEmployee.setFirstName(employee.getFirstName());
+////        existingEmployee.setEmail(employee.getEmail());
+////        // Update the first name
+////        return employeeRepository.save(existingEmployee);
+////
+////        // You can add more setters to update other fields
+////        existingEmployee.setLastName(employee.getLastName());
+////
+////        // Save and return the updated employee
+//        return  existingEmployee;
+//
+//    }
+
+
 }
